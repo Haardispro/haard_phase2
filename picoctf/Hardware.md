@@ -1,6 +1,6 @@
 # I Like Logic 
 
-Speculations -> Could be a UART signal . 
+Speculations -> Could be a UART signal, because only one channel.  
 
 
 Next step, finding the baud rate to decode the data. 
