@@ -8,7 +8,7 @@ The given link, was to a file named `tftp.pcapng`.
 I had to lookup what a `.pcapng` file was and from what I could understand, it had to do something with packets and file transfer. This file can be opened with an application called Wireshark. `.pcapng` file is a packet capture file where packets are sniffed from a given network. 
 
 
-I exported all the files from `tftp.pcapng` and got the following: 
+I exported all the files from `tftp.pcapng` and got the following(File->Export Objects->TFTP): 
 ![wireshark](assets/wireshark.png)
 
 
