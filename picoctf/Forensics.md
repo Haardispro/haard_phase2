@@ -143,7 +143,7 @@ I have to make an audio sink. What it means is that, audio received from the pla
  
  This is the image I got: 
 
-![sstv](sstv.png)
+![sstv](assets/sstv.png)
 
 As we can see, the flag is clearly mentioned in the photo. 
 
