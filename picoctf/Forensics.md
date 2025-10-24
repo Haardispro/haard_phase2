@@ -113,3 +113,47 @@ flag: `picoCTF{qu1t3_a_v13w_2020}`
 
 # m00nwalk 
 
+Description: 
+Decode this [message](https://jupiter.challenges.picoctf.org/static/d6fcea5e3c6433680ea4f914e24fab61/message.wav) from the moon.
+
+Provided with a file called `message.wav`. 
+
+Stuff tried -> Audacity, Spectrogram
+
+The first hint helped me find out which type of signal was contained in the wav file. 
+
+Hint: How did pictures from the moon landing get sent back to Earth?
+After looking up on google, this is what I found: 
+-> NASA selected a scan converter manufactured by RCA to convert the black-and-white SSTV signals from the Apollo 7, 8, 9 and 11 missions
+
+SSTV -> Slow Scan Television
+
+There are two ways that can be used to solve this chal: 
+1) Using the QSSTV application to decode the signal
+2) Using a premade decoder from github to decode the signal. 
+
+Method 1: 
+
+Using the `qsstv` application, I can decode the data from the wav file. 
+
+
+I have to make an audio sink. What it means is that, audio received from the playback of the wav file will be provided as an input to the QSSTV receiver.
+
+ By following this guide: https://askubuntu.com/questions/1338747/virtual-audio-sink-virtual-audio-cable-on-ubuntu, I managed to create an audio sink. 
+ 
+ This is the image I got: 
+
+![[Pasted image 20251024173550.png]]
+
+As we can see, the flag is clearly mentioned in the photo. 
+
+Method 2: 
+
+By making use of this project on github, I can directly get the data without running it through a specialised program. 
+
+https://github.com/colaclanth/sstv
+
+By directly running the command : `sstv -d message.wav -o result.png` I got my image. 
+
+
+flag: `picoCTF{beep_boop_im_in_space}`
