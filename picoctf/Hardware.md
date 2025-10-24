@@ -1,3 +1,6 @@
+# IQ Test
+
+---
 # I Like Logic 
 
 Description: 
@@ -338,3 +341,11 @@ flag: `FCSC{b1dee4eeadf6c4e60aeb142b0b486344e64b12b40d1046de95c89ba5e23a9925}`
 
 #### Reference: 
 https://kashmir54.github.io/ctfs/CyberApocalypse2021/
+
+---
+
+# Bare Metal Alchemist 
+
+
+
+
