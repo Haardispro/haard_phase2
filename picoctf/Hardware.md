@@ -1,25 +1,44 @@
 # I Like Logic 
 
-Speculations -> Could be a UART signal, because only one channel.  
+Description: 
+i like logic and i like files, apparently, they have something in common, what should my next step be.
+### Solve: 
+The challenge provided me with a file called `challenge.sal` . On looking up what are `.sal` files, they are Saleae Logic Analyser capture files. It captures data from a logic analyser. 
 
+I opened the file using the Saleae 2 Logic software, and it looked something like this: 
+![logic1](logic1.png)
 
+My first speculation was that, considering there's only one channel, it has to be a UART signal. 
+To analyse a UART signal and decode meaningful data from it, we need to know the baud rate. 
 Next step, finding the baud rate to decode the data. 
 
-104.16 us 
+Baud rate is the number of symbols transmitted per second over a communication channel. 
+Basically -> signals/second. 
+
+To calculate baud rate of a signal, you need to find out the lowest time take for the transmission of the Least Significant Bit in the signal. 
+
+Basically, lowest time taken for the off signal. 
+![logic2](assets/logic2.png)
+The lowest time I could find was 104.16 us 
+Therefore, calculating baudrate: 
 
 ```
-1 bit      1000000us
--------- X --------- = 9600.614 bits/second 
-104.16us    1s 
+   1 
+-------- X 1000000 = 9600.614439324 
+ 104.16
 ```
 
-comparing it with standard baud rates. 
+Comparing the result with standard baud rates. 
 nearest baud rate was 9600 
 
 Lets configure the analyser with this standard value.
 
-FCSC{b1dee4eeadf6c4e60aeb142b0b486344e64b12b40d1046de95c89ba5e23a9925}
-FCSC{b1dee4eeadf6c4e60aeb142b0b486344e64b12b40d1046de95c89ba5e23a9925}
+Add Analyser -> Async Serial -> 
+![](logic3.png)
+![](logic4.png)
+
+This is the data I got after decoding the signal. 
+
 
 ```
 on't think he makes any claims of
@@ -313,10 +332,8 @@ us.  He told us of t
 ```
 
 
+The flag was right there in between the lines of the paragraph: 
+flag: `FCSC{b1dee4eeadf6c4e60aeb142b0b486344e64b12b40d1046de95c89ba5e23a9925}`
 
-
-
-
-Reference: 
-
+#### Reference: 
 https://kashmir54.github.io/ctfs/CyberApocalypse2021/
