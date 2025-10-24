@@ -36,7 +36,9 @@ nearest baud rate was 9600
 Lets configure the analyser with this standard value.
 
 Add Analyser -> Async Serial -> 
+
 ![](assets/logic3.png)
+
 ![](assets/logic4.png)
 
 This is the data I got after decoding the signal. 
