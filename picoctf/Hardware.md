@@ -9,7 +9,7 @@ i like logic and i like files, apparently, they have something in common, what s
 The challenge provided me with a file called `challenge.sal` . On looking up what are `.sal` files, they are Saleae Logic Analyser capture files. It captures data from a logic analyser. 
 
 I opened the file using the Saleae 2 Logic software, and it looked something like this: 
-![logic1](logic1.png)
+![logic1](assets/logic1.png)
 
 My first speculation was that, considering there's only one channel, it has to be a UART signal. 
 To analyse a UART signal and decode meaningful data from it, we need to know the baud rate. 
@@ -19,7 +19,6 @@ Baud rate is the number of symbols transmitted per second over a communication c
 Basically -> signals/second. 
 
 To calculate baud rate of a signal, you need to find out the lowest time taken for the transmission of the Least Significant Bit in the signal, which is the lowest time for the 'off' signal. 
-
 
 ![logic2](assets/logic2.png)
 The lowest time I could find was 104.16 us 
@@ -37,8 +36,8 @@ nearest baud rate was 9600
 Lets configure the analyser with this standard value.
 
 Add Analyser -> Async Serial -> 
-![](logic3.png)
-![](logic4.png)
+![](assets/logic3.png)
+![](assets/logic4.png)
 
 This is the data I got after decoding the signal. 
 
