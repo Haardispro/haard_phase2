@@ -18,7 +18,7 @@ Input: `011100011000101001000100101010101110`
 
 Output: `100010011000`
 
-![iq_test](iq_test.png)
+![iq_test](assets/iq_test.png)
 
 flag: `nite{100010011000}`
 
