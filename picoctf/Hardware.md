@@ -14,7 +14,11 @@ But the binary number we got was 35 digits and not 36.
 Therefore, a 0 has to be prepended to the given binary number to make it fit into the 36 inputs. 
 By using Boolean algebra, the following result was obtained: 
 
-![[Pasted image 20251026153415.png]]
+Input: `011100011000101001000100101010101110`
+
+Output: `100010011000`
+
+![iq_test](iq_test.png)
 
 flag: `nite{100010011000}`
 
