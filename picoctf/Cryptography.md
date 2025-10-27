@@ -183,12 +183,70 @@ flag: `picoCTF{custom_d2cr0pt6d_66778b34}`
 ---
 # miniRSA 
 
-read about RSA cryptosystem and how it works 
+Description:
+Let's decrypt this: [ciphertext](https://jupiter.challenges.picoctf.org/static/ee7e2388b45f521b285334abb5a63771/ciphertext)? Something seems a bit small.
 
-N, e and C were given. 
+Ciphertext: 
 
-e is very small, can be easily exploited using Cube Root Attack. 
+```text
+N: 29331922499794985782735976045591164936683059380558950386560160105740343201513369939006307531165922708949619162698623675349030430859547825708994708321803705309459438099340427770580064400911431856656901982789948285309956111848686906152664473350940486507451771223435835260168971210087470894448460745593956840586530527915802541450092946574694809584880896601317519794442862977471129319781313161842056501715040555964011899589002863730868679527184420789010551475067862907739054966183120621407246398518098981106431219207697870293412176440482900183550467375190239898455201170831410460483829448603477361305838743852756938687673
+e: 3
 
-put into dcode.fr to get the flag. 
+ciphertext (c): 2205316413931134031074603746928247799030155221252519872649649212867614751848436763801274360463406171277838056821437115883619169702963504606017565783537203207707757768473109845162808575425972525116337319108047893250549462147185741761825125 
+```
+
+This is how the Cipher text C is calculated: 
+
+##### Key generation
+
+The keys for the RSA algorithm are generated in the following way:
+
+1. Choose two large [prime numbers](https://en.wikipedia.org/wiki/Prime_number "Prime number") p and q.
+    - To make factoring infeasible, p and q must be chosen at random from a large space of possibilities, such as all prime numbers between 21023 and 21024 (corresponding to a 2,048-bit key). Many different algorithms for prime selection are used in practice.[[29]](https://en.wikipedia.org/wiki/RSA_cryptosystem#cite_note-svenda2016mkq-29)
+    - p and q are kept secret.
+2. Compute _n_ = _pq_.
+    - n is used as the [modulus](https://en.wikipedia.org/wiki/Modular_arithmetic "Modular arithmetic") for both the public and private keys. Its length, usually expressed in bits, is the [key length](https://en.wikipedia.org/wiki/Key_length "Key length").
+    - n is released as part of the public key.
+3. Compute _λ_(_n_), where λ is [Carmichael's totient function](https://en.wikipedia.org/wiki/Carmichael%27s_totient_function "Carmichael's totient function"). Since _n_ = _pq_, _λ_(_n_) = [lcm](https://en.wikipedia.org/wiki/Least_common_multiple "Least common multiple")(_λ_(_p_), _λ_(_q_)), and since p and q are prime, _λ_(_p_) = _[φ](https://en.wikipedia.org/wiki/Euler_totient_function "Euler totient function")_(_p_) = _p_ − 1, and likewise _λ_(_q_) = _q_ − 1. Hence _λ_(_n_) = lcm(_p_ − 1, _q_ − 1).
+    - The lcm may be calculated through the [Euclidean algorithm](https://en.wikipedia.org/wiki/Euclidean_algorithm "Euclidean algorithm"), since lcm(_a_, _b_) = ⁠|_ab_|/gcd(_a_, _b_)⁠.
+    - _λ_(_n_) is kept secret.
+4. Choose an integer e such that 1 < _e_ < _λ_(_n_) and [gcd](https://en.wikipedia.org/wiki/Greatest_common_divisor "Greatest common divisor")(_e_, _λ_(_n_)) = 1; that is, e and _λ_(_n_) are [coprime](https://en.wikipedia.org/wiki/Coprime "Coprime").
+    - e having a short [bit-length](https://en.wikipedia.org/wiki/Bit-length "Bit-length") and small [Hamming weight](https://en.wikipedia.org/wiki/Hamming_weight "Hamming weight") results in more efficient encryption – the most commonly chosen value for e is 2^16 + 1 = 65537. The smallest (and fastest) possible value for e is 3, but such a small value for e may expose vulnerabilities in insecure padding schemes.   - e is released as part of the public key.
+5. Determine d as _d_ ≡ _e_−1 (mod _λ_(_n_)); that is, d is the [modular multiplicative inverse](https://en.wikipedia.org/wiki/Modular_multiplicative_inverse "Modular multiplicative inverse") of e modulo _λ_(_n_).
+    - This means: solve for d the equation _de_ ≡ 1 (mod _λ_(_n_)); d can be computed efficiently by using the [extended Euclidean algorithm](https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm "Extended Euclidean algorithm"), since, thanks to e and _λ_(_n_) being coprime, said equation is a form of [Bézout's identity](https://en.wikipedia.org/wiki/B%C3%A9zout%27s_identity "Bézout's identity"), where d is one of the coefficients.
+    - d is kept secret as the _private key exponent_.
+
+The _public key_ consists of the modulus n and the public exponent e. The _private key_ consists of the private exponent d, which must be kept secret. p, q, and _λ_(_n_) must also be kept secret because they can be used to calculate d. In fact, they can all be discarded after d has been computed.
+
+In my given `ciphertext`, e is taken as 3 which is very small and vulnerable to attacks. 
+
+If e is very small, can be easily exploited using Cube Root Attack. 
+
+#### Cube Root Attack: 
 
 
+We know that 
+
+```
+C = p^e mod N 
+```
+
+where, 
+- C -> Cipher text
+- N -> modulus public key 
+- e -> exponent, public key 
+- p -> original text
+
+Here, if p and e are so small that `p^e < n`, then plain text p can be retrieved simply calculated by the e-th root of c: 
+
+```
+p = c^(1/e) (if p^e < N)
+```
+
+Such type of simple attacks can be carried out by automated tools like dcode.fr and thats how I got my flag. The flag can also be obtained through a python script, but this is easier.  
+
+
+![](assets/minirsa.png)
+
+
+flag: `picoCTF{n33d_a_lArg3r_e_606ce004}`
