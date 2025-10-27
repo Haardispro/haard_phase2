@@ -96,6 +96,18 @@ class VaultDoor3 {
 
 ```
 
+This is what the above mentioned program does: 
+- takes in user input and runs that input through a function called `checkPassword`. 
+- this function runs a bunch of for loops on the string and scrambles it. 
+- if the scrambled string is equals to `jU5t_a_sna_3lpm18gb41_u_4_mfr340`, then the password is correct, otherwise it says Access Denied. 
+
+I wrote a python script which just reverses what the for loops did. 
+this is what the for loops did: 
+- from char `0-8` -> as it is
+- from char `8-16` -> reverses its order 
+- from char `16-32` -> reverses order every 2nd step
+- from char `31-17` -> as it is 
+
 solve.py
 ```python
 buff = "jU5t_a_sna_3lpm18gb41_u_4_mfr340"
