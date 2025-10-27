@@ -250,3 +250,11 @@ Such type of simple attacks can be carried out by automated tools like dcode.fr 
 
 
 flag: `picoCTF{n33d_a_lArg3r_e_606ce004}`
+
+#### References: 
+
+https://en.wikipedia.org/wiki/RSA_cryptosystem
+
+https://crypto.stackexchange.com/questions/33561/cube-root-attack-rsa-with-low-exponent
+
+https://www.dcode.fr/rsa-cipher
