@@ -44,9 +44,7 @@ Description:
 For what argument does this program print `win` with variables `83`, `0` and `3`? File: [chall_1.S](https://mercury.picoctf.net/static/b4fd1dabc9dec63c37180b5b05783b55/chall_1.S) Flag format: picoCTF{XXXXXXXX} -> (hex, lowercase, no 0x, and 32 bits. ex. 5614267 would be picoCTF{0055aabb})
 
 
-
-
-```assembly 
+```assembly
 	.arch armv8-a
 	.file	"chall_1.c"
 	.text
@@ -119,6 +117,21 @@ main:
 	.section	.note.GNU-stack,"",@progbits
 
 ```
+
+Command required to compile ARM Assembly on x86  
+
+```
+aarch64-linux-gnu-gcc -o chall_1 chall_1.S 
+qemu-aarch64 -L /usr/aarch64-linux-gnu ./chall_1 <argument_in_integer>
+```
+
+Initial tests: 
+```
+> qemu-aarch64 -L /usr/aarch64-linux-gnu ./chall_1 21
+You Lose :(
+```
+
+
 
 
 ---
