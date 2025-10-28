@@ -14,8 +14,8 @@ Contents of secret.enc:
 Q�t*$�Wqt�w^Q% 
 ```
 
-So, this is how the Chosen Plaintext Attack can work to exploit this 
-
+One of the hints of the challenge asked me to take a look at Chosen Plaintext attack:. 
+#### Chosen Ciphertext Attack
 
 A chosen ciphertext attack is pretty straightforward on textbook RSA. 
 Firstly, we have a piece of ciphertext we'll denote by :
@@ -49,9 +49,10 @@ Therefore from the preceding result:
 ```
 
 Hence, when we get that value back, we can easily calculate `t`, but just simple halving it. 
-
 This is possible with any integer, we took 2 here just as an example. 
 
+
+#### Solve: 
 
 So, this is how I implemented this in the given challenge: 
 ```
@@ -103,7 +104,6 @@ Final flag: `picoCTF{su((3ss_(r@ck1ng_r3@_881d93b6}`
 
 #### Reference: 
 https://crypto.stackexchange.com/questions/2323/how-does-a-chosen-plaintext-attack-on-rsa-work
-
 
 ---
 # Custom Encryption 
