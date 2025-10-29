@@ -41,7 +41,7 @@ Final answer: `picoCTF{549698}`
 # ARMssembly 1 
 
 Description: 
-For what argument does this program print `win` with variables `83`, `0` and `3`? File: [chall_1.S](https://mercury.picoctf.net/static/b4fd1dabc9dec63c37180b5b05783b55/chall_1.S) Flag format: picoCTF{XXXXXXXX} -> (hex, lowercase, no 0x, and 32 bits. ex. 5614267 would be picoCTF{0055aabb})
+For what argument does this program print `win` with variables `83`, `0` and `3`? File: [chall_1.S](https:;mercury.picoctf.net/static/b4fd1dabc9dec63c37180b5b05783b55/chall_1.S) Flag format: picoCTF{XXXXXXXX} -> (hex, lowercase, no 0x, and 32 bits. ex. 5614267 would be picoCTF{0055aabb})
 
 Command required to compile ARM Assembly on x86  
 
@@ -66,28 +66,28 @@ We are provided with a file called chall_1.S, lets trace the ARM assembly progra
 	.global	func
 	.type	func, %function
 func:
-	sub	sp, sp, #32      // sp=sp-32  // sp = stack pointer, allocate 32 bytes on the stack  
-	str	w0, [sp, 12]     // store register w0 at mem location sp+12, which is the user input 
-	mov	w0, 83           // move 83 in w0 register, w0 = 83 
-	str	w0, [sp, 16]     // store value of w0 in sp+16, sp+16 = 83 
-	str	wzr, [sp, 20]    // store value of wzr in sp+20, sp+20 = 0 // wzr is a zero register
-	mov	w0, 3            // move 3 in w0 register, w0 = 3
-	str	w0, [sp, 24]     // store value of w0 in sp+24, sp+24 = 3
-	ldr	w0, [sp, 20]     // load from mem addr sp+20 to register w0, w0 = 0
-	ldr	w1, [sp, 16]     // load from mem addr sp+16 to register w1, w1 = 83
-	lsl	w0, w1, w0       // logical shift left, w0 = w1 << w0 => w0=83<<0=83
-	str	w0, [sp, 28]     // store w0 at sp+28, sp+28 = w0 = 83
-	ldr	w1, [sp, 28]     // load from mem addr sp+28 to register w1, w1=83
-	ldr	w0, [sp, 24]     // load from mem addr sp+24 to register w0, w0=3
-	sdiv	w0, w1, w0   // signed division, w0 = w1 / w0 => w0 = 83/3 = 27 (integer division)
-	str	w0, [sp, 28]     // sp+28 = w0 = 27
-	ldr	w1, [sp, 28]     // load from mem addr sp+28 to register w1, w1=27
-	ldr	w0, [sp, 12]     // w0 = sp+12, w0 = input 
-	sub	w0, w1, w0       // w0 = w1 - input = 27 - input 
-	str	w0, [sp, 28]     // sp+28 = w0 
-	ldr	w0, [sp, 28]     // load from mem addr sp+28 to register w0 
-	add	sp, sp, 32       // sp=sp+32, free 32 allocated bytes  
-	ret                  // return w0, which is 27 - input  
+	sub	sp, sp, #32      ; sp=sp-32  ; sp = stack pointer, allocate 32 bytes on the stack  
+	str	w0, [sp, 12]     ; store register w0 at mem location sp+12, which is the user input 
+	mov	w0, 83           ; move 83 in w0 register, w0 = 83 
+	str	w0, [sp, 16]     ; store value of w0 in sp+16, sp+16 = 83 
+	str	wzr, [sp, 20]    ; store value of wzr in sp+20, sp+20 = 0 ; wzr is a zero register
+	mov	w0, 3            ; move 3 in w0 register, w0 = 3
+	str	w0, [sp, 24]     ; store value of w0 in sp+24, sp+24 = 3
+	ldr	w0, [sp, 20]     ; load from mem addr sp+20 to register w0, w0 = 0
+	ldr	w1, [sp, 16]     ; load from mem addr sp+16 to register w1, w1 = 83
+	lsl	w0, w1, w0       ; logical shift left, w0 = w1 << w0 => w0=83<<0=83
+	str	w0, [sp, 28]     ; store w0 at sp+28, sp+28 = w0 = 83
+	ldr	w1, [sp, 28]     ; load from mem addr sp+28 to register w1, w1=83
+	ldr	w0, [sp, 24]     ; load from mem addr sp+24 to register w0, w0=3
+	sdiv	w0, w1, w0   ; signed division, w0 = w1 / w0 => w0 = 83/3 = 27 (integer division)
+	str	w0, [sp, 28]     ; sp+28 = w0 = 27
+	ldr	w1, [sp, 28]     ; load from mem addr sp+28 to register w1, w1=27
+	ldr	w0, [sp, 12]     ; w0 = sp+12, w0 = input 
+	sub	w0, w1, w0       ; w0 = w1 - input = 27 - input 
+	str	w0, [sp, 28]     ; sp+28 = w0 
+	ldr	w0, [sp, 28]     ; load from mem addr sp+28 to register w0 
+	add	sp, sp, 32       ; sp=sp+32, free 32 allocated bytes  
+	ret                  ; return w0, which is 27 - input  
 	.size	func, .-func
 	.section	.rodata
 	.align	3
@@ -110,10 +110,10 @@ main:
 	ldr	x0, [x0]
 	bl	atoi
 	str	w0, [x29, 44]
-	ldr	w0, [x29, 44]    // w0 = x29+44
-	bl	func             // branch with link instruction, used for function calls, links w0 of func to w0 of main 
-	cmp	w0, 0            // compare w0 with 0, if 27-input = 0, then run .LC0
-	bne	.L4              // branch not equal to, run if 27-input not 0  
+	ldr	w0, [x29, 44]    ; w0 = x29+44
+	bl	func             ; branch with link instruction, used for function calls, links w0 of func to w0 of main 
+	cmp	w0, 0            ; compare w0 with 0, if 27-input = 0, then run .LC0
+	bne	.L4              ; branch not equal to, run if 27-input not 0  
 	adrp	x0, .LC0
 	add	x0, x0, :lo12:.LC0
 	bl	puts
@@ -144,13 +144,13 @@ Converting 27 to hex, we get 1B
 flag: `picoCTF{0000001B}`
 
 Reference: 
-https://developer.arm.com/documentation/107829/0201/Assembly-language-basics
+https:;developer.arm.com/documentation/107829/0201/Assembly-language-basics
 
 ---
 # Vault Door 3
 
 Description: 
-This vault uses for-loops and byte arrays. The source code for this vault is here: [VaultDoor3.java](https://jupiter.challenges.picoctf.org/static/a648ca6dd275b9454c5d0de6d0f6efd3/VaultDoor3.java)
+This vault uses for-loops and byte arrays. The source code for this vault is here: [VaultDoor3.java](https:;jupiter.challenges.picoctf.org/static/a648ca6dd275b9454c5d0de6d0f6efd3/VaultDoor3.java)
 
 VaultDoor3.java: 
 ```java
