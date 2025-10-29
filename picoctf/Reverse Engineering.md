@@ -144,7 +144,7 @@ Converting 27 to hex, we get 1B
 flag: `picoCTF{0000001B}`
 
 Reference: 
-https:;developer.arm.com/documentation/107829/0201/Assembly-language-basics
+https://developer.arm.com/documentation/107829/0201/Assembly-language-basics
 
 ---
 # Vault Door 3
