@@ -39,7 +39,7 @@ void vuln(){
    printf(story);
    printf("\n");
 }
-u
+
 int main(int argc, char **argv){
 
   setvbuf(stdout, NULL, _IONBF, 0);
@@ -98,6 +98,15 @@ for i in range(128):
     except Exception:
         pass
 ```
+
+What this code does is basically, sends the format string `%{integer}$s` to the program, returns its output and then closes the connection with the server. 
+
+If the output contains `CTF`, then it will print the output and and close the connection and break the loop.  
+
+`%{integer}$s` -> `printf` will fetch whatever value is at the stack location for argument {integer} and treat that value as an address. It will then try to read a NUL-terminated string from that address and print it.
+
+I tried using `%x`, but it didn't yield any results, even up until the end of the buffer. 
+`%s` is what gave out the flag. 
 
 Output: 
 ```
@@ -174,7 +183,9 @@ b'CTF{L34k1ng_Fl4g_0ff_St4ck_11a2b52a}'
 [*] Closed connection to saturn.picoctf.net port 57992
 ```
 
-
 flag: `picoCTF{L34k1ng_Fl4g_0ff_St4ck_11a2b52a}`
 
 Reference: 
+https://ctf101.org/binary-exploitation/what-is-a-format-string-vulnerability/
+https://docs.pwntools.com/en/stable/
+
