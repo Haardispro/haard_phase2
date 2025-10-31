@@ -39,7 +39,7 @@ void vuln(){
    printf(story);
    printf("\n");
 }
-
+u
 int main(int argc, char **argv){
 
   setvbuf(stdout, NULL, _IONBF, 0);
@@ -53,6 +53,31 @@ int main(int argc, char **argv){
 }
 ```
 
+Lets analyse the code. Here is what is interesting: 
+
+```c
+void vuln(){
+   char flag[BUFSIZE];
+   char story[128];
+
+   readflag(flag, FLAGSIZE);
+
+   printf("Tell me a story and then I'll tell you one >> ");
+   scanf("%127s", story);
+   printf("Here's a story - \n");
+   printf(story); // <- no format specifier, vulnerable to format string attacks
+   printf("\n");
+}
+```
+
+This is how the print statement works: 
+The `printf` function takes a variable number of arguments. The 0th argument is the format string, and the 1st and late arguments are the values that match the format. The grammar of a conversion specification is: 
+```
+%[argument$][flags][width][.precision][length modifier]conversion
+```
+
+But in the program given above, there is only one argument passed in the `printf` statement. 
+So, we have full control on what format string to use. 
 
 Python script: 
 ```python
@@ -150,4 +175,6 @@ b'CTF{L34k1ng_Fl4g_0ff_St4ck_11a2b52a}'
 ```
 
 
-flag: `CTF{L34k1ng_Fl4g_0ff_St4ck_11a2b52a}`
+flag: `picoCTF{L34k1ng_Fl4g_0ff_St4ck_11a2b52a}`
+
+Reference: 
