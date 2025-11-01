@@ -79,6 +79,8 @@ The `printf` function takes a variable number of arguments. The 0th argument is 
 But in the program given above, there is only one argument passed in the `printf` statement. 
 So, we have full control on what format string to use. 
 
+Now, we can craft a python script, that checks all stack addresses for the flag.  
+
 Python script: 
 ```python
 from pwn import * 
