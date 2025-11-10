@@ -14,4 +14,4 @@ MISO
 Enable
 Clock 
 
-![[Pasted image 20251105013519.png]]
+![[logic.png]]

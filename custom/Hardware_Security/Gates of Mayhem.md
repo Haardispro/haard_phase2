@@ -1,10 +1,13 @@
 
 Logic gates using BJTs 
 BC107, NPN transistor 
+Provided schematic: 
+![](assets/schematic.png)
 
+The entire circuit can be boiled down to a single expression: 
+`output = (in1 and in2) ^ ((in3 and in4) and (in5 or in6))`
 
 script.py
-
 ```python
 import csv
 
