@@ -4,14 +4,14 @@ opened file using saleae logic
 
 sd cards use SPI protocol 
 
-not sure how to proceed
 
 
-HTB{unp2073c73d_532141_p2070c015_0n_53cu23_d3v1c35}
 
 MOSI
 MISO
 Enable
 Clock 
 
-![[logic.png]]
+![](../assets/logic.png)
+
+flag: `HTB{unp2073c73d_532141_p2070c015_0n_53cu23_d3v1c35}`
