@@ -14,7 +14,7 @@ A CAN bus signal looks like a differential pair of signals on two twisted wires 
 
 This is the provided signal:  
 
-![[Pasted image 20251201002056.png]]
+![signal](../assets/signal.png)
 
 The first digital channel is what we are interested in. That's the one which needs to be decoded to get the flag.  
 
@@ -30,7 +30,7 @@ Calculated baud rate: 119904.076738609 bits/second
 
 Lets add a CAN analyser and decode the data: 
 
-![[Pasted image 20251201002716.png]]
+![analyser](../assets/analyser.png)
 
 This is what I got after adding a CAN decoder at the appropriate baud rate
 
@@ -43,7 +43,7 @@ Standard baud rates for CAN bus:
 The nearest standard rate is 125 kbps
 I tried 125 kbps got the flag. 
 
-![[Pasted image 20251201003253.png]]
+![decoded](../assets/decoded_flag.png)
 
 
 **Note:** You'll get output based on the efficiency of the ADC inside the logic analyser , that is why the calculated baud rate doesn't match the standard ones. 
