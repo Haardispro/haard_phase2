@@ -2,15 +2,10 @@
 
 
 opened up urh 
+selected ask  
 autodetect parameters
 selected manchester 2 
 got the flag. 
-
-
-Selected ASK 
-autodetect parameters 
-
-
 
 
 
