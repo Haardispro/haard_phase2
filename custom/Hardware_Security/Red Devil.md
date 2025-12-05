@@ -1,5 +1,19 @@
 # Red Devil 
 
+
+opened up urh 
+autodetect parameters
+selected manchester 2 
+got the flag. 
+
+
+Selected ASK 
+autodetect parameters 
+
+
+
+
+
 was given .cf32 file
 
 
@@ -11,4 +25,7 @@ got the codes in hex
 
 used ascii code to decode 
 
+
+
+flag: `HTB{RF_H4ck1n6_1s_c00l}`
 
