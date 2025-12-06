@@ -27,7 +27,7 @@ user:1001:
 
 goodmorningindia
 
-Stage 1: St4G3$1 -> `flag{th1s_1s_th3_1st_st4g3!!}`
+Stage 1: `flag{th1s_1s_th3_1st_st4g3!!}`
 Stage 2: 
 Stage 3: `flag{w3ll_3rd_stage_was_easy}`
 

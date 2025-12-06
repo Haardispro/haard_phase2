@@ -18,6 +18,15 @@ SPI signal has 4 channels:
 - Enable -> (slave select or chip select line)
 - Clock 
 
+Out objective is to figure out, which channel corresponds to the given signals. 
+
+This is how the signal looks like: 
+
+
+
+
+
+
 ![[Pasted image 20251201200234.png]]
 
 

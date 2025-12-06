@@ -1,1 +1,25 @@
 # JTP-2
+
+
+### Write up completion 
+
+**Binary Exploitation**
+- [x] Imma Dev 
+- [ ] Performative 
+- [ ] Property In Manipal
+- [ ] IQ Test
+- [x] Hungry
+
+**Hardware**
+- [ ] I Like Logic More
+- [ ] Red Devil
+- [x] Formwear
+- [x] Speed Thrills But Kills
+- [ ] Gates of Mayhem 
+
+**Digital Forensics**
+- [x] Hide and Seek
+- [ ] Nutrela Chunks
+- [ ] RAR of the Abyss 
+- [ ] NineTails
+- [ ] Re:Draw
