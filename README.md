@@ -15,7 +15,7 @@
 - [x] Red Devil
 - [x] Formwear
 - [x] Speed Thrills But Kills
-- [ ] Gates of Mayhem 
+- [x] Gates of Mayhem 
 
 **Digital Forensics**
 - [x] Hide and Seek
