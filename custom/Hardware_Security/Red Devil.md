@@ -48,7 +48,7 @@ Manchester II
 Differential Manchester
 ```
 
-I found out which type of encoding it was by trial and error. I could not find deduce which type of encoding it could be using the waveform or the sample size. 
+I found out which type of encoding it was by trial and error. I could not deduce which type of encoding it could be using the waveform or the sample size. 
 
 I switched to the analysis tab and tried decoding using the schemes mentioned above. 
 

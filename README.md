@@ -6,8 +6,8 @@
 **Binary Exploitation**
 - [x] Imma Dev 
 - [x] Performative 
-- [ ] Property In Manipal
-- [ ] IQ Test
+- [x] Property In Manipal
+- [x] IQ Test
 - [x] Hungry
 
 **Hardware**
