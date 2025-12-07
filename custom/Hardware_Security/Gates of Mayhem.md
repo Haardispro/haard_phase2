@@ -105,4 +105,4 @@ b'citadel{1_l0v3_t0_3xpl01t_l0g1c}'
 citadel{1_l0v3_t0_3xpl01t_l0g1c}
 ```
 
-flag: `citadel{1_l0v3_t0_3xpl01t_l0g1c}'
+flag: `citadel{1_l0v3_t0_3xpl01t_l0g1c}`
