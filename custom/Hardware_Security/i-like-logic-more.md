@@ -22,13 +22,18 @@ Out objective is to figure out, which channel corresponds to the given signals.
 
 This is how the signal looks like: 
 
+![[Pasted image 20251207165602.png]]
 
-
-
-
+Our next objective is to find which one is MOSI channel, MISO channel etc. 
+I looked up the structure of SPI signal and found that: 
+- Channel 3 -> Clock
+- Channel 2 -> Enable
+- Channel 0 -> MOSI
+- Channel 1 -> MISO 
+  
+Adding a SPI analyser and putting in appropriate values, I got the flag. 
 
 ![[Pasted image 20251201200234.png]]
-
 
 
 ![](../assets/logic.png)

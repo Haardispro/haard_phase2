@@ -5,13 +5,13 @@
 
 **Binary Exploitation**
 - [x] Imma Dev 
-- [ ] Performative 
+- [x] Performative 
 - [ ] Property In Manipal
 - [ ] IQ Test
 - [x] Hungry
 
 **Hardware**
-- [ ] I Like Logic More
+- [x] I Like Logic More
 - [ ] Red Devil
 - [x] Formwear
 - [x] Speed Thrills But Kills
