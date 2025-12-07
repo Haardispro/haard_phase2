@@ -21,5 +21,5 @@
 - [x] Hide and Seek
 - [ ] Nutrela Chunks
 - [ ] RAR of the Abyss 
-- [ ] NineTails
+- [x] NineTails
 - [ ] Re:Draw
