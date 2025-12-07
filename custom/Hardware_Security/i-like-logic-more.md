@@ -22,7 +22,7 @@ Out objective is to figure out, which channel corresponds to the given signals.
 
 This is how the signal looks like: 
 
-![[Pasted image 20251207165602.png]]
+![](../assets/sig1.png)
 
 Our next objective is to find which one is MOSI channel, MISO channel etc. 
 I looked up the structure of SPI signal and found that: 
@@ -33,8 +33,7 @@ I looked up the structure of SPI signal and found that:
   
 Adding a SPI analyser and putting in appropriate values, I got the flag. 
 
-![[Pasted image 20251201200234.png]]
-
+![](../assets/spi_anal.png)
 
 ![](../assets/logic.png)
 

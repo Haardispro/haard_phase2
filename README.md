@@ -12,7 +12,7 @@
 
 **Hardware**
 - [x] I Like Logic More
-- [ ] Red Devil
+- [x] Red Devil
 - [x] Formwear
 - [x] Speed Thrills But Kills
 - [ ] Gates of Mayhem 
