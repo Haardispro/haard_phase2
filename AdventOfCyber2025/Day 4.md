@@ -10,4 +10,14 @@ Software:
 - Reviewed the source code using AI to detect and patch vulnerabilities  
 
 
+1) Complete the AI showcase by progressing through all of the stages. What is the flag presented to you?
+   - **flag:** `THM{AI_MANIA}`
+
+1) Execute the exploit provided by the red team agent against the vulnerable web application hosted at `10.48.173.85:5000`. What flag is provided in the script's output after it? Remember, you will need to update the IP address placeholder in the script with the IP of your vulnerable machine
+   - **flag:**  `THM{SQLI_EXPLOIT}`
+
+
+
+
+
 
