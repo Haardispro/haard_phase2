@@ -53,7 +53,6 @@ def test_flag(flag_str):
             text=True
         )
         output, _ = proc.communicate(input=flag_str + "\nquit\n", timeout=10)
-
         for line in output.split('\n'):
             if 'Score:' in line:
                 return float(line.split(':')[1].strip())
