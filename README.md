@@ -27,12 +27,6 @@
 │   ├── Flag Leak.md
 │   ├── Heap 1.md
 │   └── Local Target.md
-├── cryptography
-│   ├── ciphertext
-│   ├── enc_flag
-│   ├── password.enc
-│   ├── script.py
-│   └── secret.enc
 ├── Curated_Challenges-1.pdf
 ├── custom
 │   ├── assets
