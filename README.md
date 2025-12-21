@@ -1,7 +1,20 @@
 # JTP-2
 
 ```
-➜ tree
+.
+├── AdventOfCyber2025
+├── Assembly_pwn.college
+├── bonus
+├── Curated_Challenges-1.pdf
+├── custom
+├── Domain-name.md
+├── JTP-2.pdf
+├── niteCTF
+├── picoctf
+└── README.md
+
+7 directories, 4 files
+➜  ~/Documents/recruitment/haard_phase2 git:(main) ✗ tree -L 2
 .
 ├── AdventOfCyber2025
 │   ├── assets
@@ -19,9 +32,12 @@
 │   ├── Day 8.md
 │   ├── Day 9.md
 │   └── openvpn
-├── AoP
-│   ├── key
-│   └── key.pub
+├── Assembly_pwn.college
+│   ├── 96a2b94d4be48285f2605d843a1e6db37da9a944.pdf
+│   ├── Assembly Crash Course.md
+│   ├── Challenges.md
+│   ├── ignore
+│   └── M_Morris_Mano_Charles_R_Kime-Logic_and_Computer_Design_Fundamentals-EN.pdf
 ├── bonus
 │   ├── Echo Valley.md
 │   ├── Flag Leak.md
@@ -40,7 +56,8 @@
 │   ├── Attention is all you need (solved).md
 │   ├── IEEE Dancer (solved).md
 │   ├── Middle Fingers(Attempted).md
-│   └── Random notes.md
+│   ├── Random notes.md
+│   └── upsolve_hw
 ├── picoctf
 │   ├── assets
 │   ├── Binary Exploitation.md
@@ -49,5 +66,5 @@
 │   ├── Hardware.md
 │   ├── Reverse Engineering.md
 │   └── Web Exploitation.md
-├── README.md
+└── README.md
 ```
