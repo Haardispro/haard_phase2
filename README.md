@@ -1,20 +1,7 @@
 # JTP-2
 
 ```
-.
-├── AdventOfCyber2025
-├── Assembly_pwn.college
-├── bonus
-├── Curated_Challenges-1.pdf
-├── custom
-├── Domain-name.md
-├── JTP-2.pdf
-├── niteCTF
-├── picoctf
-└── README.md
-
-7 directories, 4 files
-➜  ~/Documents/recruitment/haard_phase2 git:(main) ✗ tree -L 2
+➜ tree
 .
 ├── AdventOfCyber2025
 │   ├── assets
