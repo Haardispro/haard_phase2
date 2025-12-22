@@ -3,4 +3,4 @@ binex/
 cryptography/
 forensics/
 rev/
-./Assembly_pwn.college/ignore/
+ignore/

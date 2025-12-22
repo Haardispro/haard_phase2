@@ -39,9 +39,6 @@ pwn.college{gPUoqdPhHsvzGEgSrOAiBlUwy8K.dRTOxwyNwkzNyEzW}
 **flag:** `pwn.college{gPUoqdPhHsvzGEgSrOAiBlUwy8K.dRTOxwyNwkzNyEzW}`
 
 ---
-
-
-
 # linear-equation-registers 
 
 ```asm
@@ -61,5 +58,84 @@ _start:
 
 Place the result into `rax`.
 
+**flag:**
+
+---
+# integer-division 
+
+```asm
+
+section .text
+    global _start 
+
+_start:
+    mov rax, rdi
+    div rsi
+```
 
 
+**flag:**
+
+---
+# modulo-operation 
+
+```asm
+
+section .text
+    global _start 
+
+_start:
+    mov rax, rdi
+    div rsi
+    mov rax, rdx 
+
+```
+
+
+**flag:**
+
+---
+# set-upper-byte  
+
+```
+MSB                                    LSB
++----------------------------------------+
+|                   rax                  |
++--------------------+-------------------+
+                     |        eax        |
+                     +---------+---------+
+                               |   ax    |
+                               +----+----+
+                               | ah | al |
+                               +----+----+
+```
+
+
+```asm
+
+section .text
+    global _start
+
+_start:
+    mov ah, 0x42
+
+```
+
+
+**flag:**
+
+
+# efficient-modulo 
+
+```
+section .text
+	global _start
+
+_start:
+	mov al, rdi
+	mov rax, al
+	
+	mov ax, rsi
+	mov rbx, ax 
+	
+```
