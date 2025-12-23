@@ -124,18 +124,19 @@ _start:
 
 **flag:**
 
-
+---
 # efficient-modulo 
 
 ```
 section .text
-	global _start
+        global _start
 
 _start:
-	mov al, rdi
-	mov rax, al
-	
-	mov ax, rsi
-	mov rbx, ax 
+        mov al, dil
+        mov bx, si
 	
 ```
+
+**flag:** `pwn.college{4TrgZpP7ID1jPDz1FD14r98gIVz.dlTOxwyNwkzNyEzW}`
+
+
