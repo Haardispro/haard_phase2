@@ -139,4 +139,68 @@ _start:
 
 **flag:** `pwn.college{4TrgZpP7ID1jPDz1FD14r98gIVz.dlTOxwyNwkzNyEzW}`
 
+---
+
+# byte-extraction 
+
+```
+section .text
+	global _start
+
+_start: 
+	mov rax, rdi 
+	shl rax, 32
+	shr rax, 56
+	shl rax, 56 
+```
+
+flag: `pwn.college{w_m4Lgwt4GL8_AajKnMBPhCoQL7.dBDMywyNwkzNyEzW}`
+
+---
+
+# bitwise-and 
+
+```
+section .text
+	global _start
+
+_start:
+	and rdi, rsi
+	and rax, rdi
+```
+
+**flag:** `pwn.college{UBz7aRoKhAEoSZxg4BhwN7iPByR.dFDMywyNwkzNyEzW}`
+
+---
+
+# check-even 
+
+Using only the following instructions:
+
+- `and`
+- `or`
+- `xor`
+
+Implement the following logic:
+
+```plaintext
+if x is even then
+  y = 1
+else
+  y = 0
+```
+
+Where:
+
+- `x = rdi`
+- `y = rax`
+
+```
+section .text
+	global _start
+
+_start:
+	
+```
+
 
