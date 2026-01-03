@@ -18,7 +18,7 @@
 - Used `Regshot` to first take snapshot of registry values before running the malware, and one snapshot are executing it.
 - Compared both the shots and looked at values added.
 - `HKU\S-1-5-21-1966530601-3185510712-10604624-1008\Software\Microsoft\Windows\CurrentVersion\Run\HopHelper`
-![[Pasted image 20260102193434.png]]
+![](day6_1.png)
 
 
 **Q4) Dynamic analysis: Filter the output of `ProcMon` for `TCP` operations. What network protocol is `HopHelper.exe` using to communicate?**
@@ -27,5 +27,5 @@
 - Filtered Operation to `TCP Connect`
 - `http`
 
-![[Pasted image 20260102193539.png]]
+![](day6_2.png)
   
