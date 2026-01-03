@@ -1,4 +1,4 @@
-# set-register 
+# 1. set-register 
 
 In this level, you will be working with registers. You will be asked to modify or read from registers.
 
@@ -39,7 +39,12 @@ pwn.college{gPUoqdPhHsvzGEgSrOAiBlUwy8K.dRTOxwyNwkzNyEzW}
 **flag:** `pwn.college{gPUoqdPhHsvzGEgSrOAiBlUwy8K.dRTOxwyNwkzNyEzW}`
 
 ---
-# linear-equation-registers 
+
+# 2. 
+
+# 3. 
+
+# 4. linear-equation-registers 
 
 ```asm
 section .text
@@ -61,7 +66,7 @@ Place the result into `rax`.
 **flag:**
 
 ---
-# integer-division 
+# 5. integer-division 
 
 ```asm
 
@@ -77,7 +82,7 @@ _start:
 **flag:**
 
 ---
-# modulo-operation 
+# 6. modulo-operation 
 
 ```asm
 
@@ -95,7 +100,7 @@ _start:
 **flag:**
 
 ---
-# set-upper-byte  
+# 7. set-upper-byte  
 
 ```
 MSB                                    LSB
@@ -125,7 +130,7 @@ _start:
 **flag:**
 
 ---
-# efficient-modulo 
+# 8. efficient-modulo 
 
 ```
 section .text
@@ -141,7 +146,7 @@ _start:
 
 ---
 
-# byte-extraction 
+# 9. byte-extraction 
 
 ```
 section .text
@@ -158,7 +163,7 @@ flag: `pwn.college{w_m4Lgwt4GL8_AajKnMBPhCoQL7.dBDMywyNwkzNyEzW}`
 
 ---
 
-# bitwise-and 
+# 10. bitwise-and 
 
 ```
 section .text
@@ -173,7 +178,7 @@ _start:
 
 ---
 
-# check-even 
+# 11. check-even (Good one)
 
 Using only the following instructions:
 
@@ -200,7 +205,76 @@ section .text
 	global _start
 
 _start:
-	
+	and rax, 0x0
+	or rax, 0x1
+	and rdi, rax
+	and rax, rdi
+	xor rax, 0x1 
 ```
 
+---
+
+# 12. memory-read 
+
+In x86, we can access the thing at a memory location, called dereferencing, like so:
+
+```
+mov rax, [some_address]        <=>     Moves the thing at 'some_address' into rax
+```
+
+This also works with things in registers:
+
+```
+mov rax, [rdi]         <=>     Moves the thing stored at the address of what rdi holds to rax
+```
+
+This works the same for writing to memory:
+
+```
+mov [rax], rdi         <=>     Moves rdi to the address of what rax holds.
+```
+
+So if `rax` was `0xdeadbeef`, then `rdi` would get stored at the address `0xdeadbeef`:
+
+```
+[0xdeadbeef] = rdi
+```
+
+```
+section .text
+	global _start
+
+_start:
+	mov rax, [0x404000]
+```
+
+**flag:** `pwn.college{gN1rMtSEREoeen8wtpwM6XSy9LB.QXyEDOzwyNwkzNyEzW}`
+
+# 13. memory-write 
+
+```
+section .text
+	global _start
+
+_start:
+	mov [0x404000], rax
+```
+
+
+**flag:** `pwn.college{4GNAkABYNkhDEwniYHuif1b7wRP.QXzEDOzwyNwkzNyEzW}`
+
+# 14. memory-increment 
+
+```
+section .text
+        global _start
+
+_start:
+        mov rax, [0x404000]
+        add rax, 0x1337
+        mov [0x404000], rax
+        sub rax, 0x1337
+```
+
+**flag:** `pwn.college{Iy9niJgbER7UdUF3FK86L2ap4fE.dNDMywyNwkzNyEzW}`
 
