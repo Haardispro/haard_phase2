@@ -1,8 +1,6 @@
 # ICS / Modbus - Claus for Concern 
 
-flag: `THM{eGgMas0V3r}`
-
-script.py
+`script.py`: 
 
 ```python
 #!/usr/bin/env python3
@@ -194,3 +192,23 @@ Flag: THM{eGgMas0V3r}
 
 ============================================================
 ```
+
+### Core Concepts:
+
+
+- **SCADA (Supervisory Control and Data Acquisition):** the command centre for industrial operations acting as a bridge between human operators and physical machines.
+- **PLCs (Programmable Logic Controllers):** the "brains" of automation; they read sensor input, execute logic rules, and send commands to actuators.
+
+- **Modbus:** an old industrial communication protocol commonly running on `TCP` port `502`.
+
+    - **Registers:** used for configuration.
+    - **Coils:** used as switches.
+
+**Q1) What port is commonly used by Modbus TCP?** 
+
+- `502`
+
+
+**Q2) What is the flag?** 
+
+- `THM{eGgMas0V3r}`

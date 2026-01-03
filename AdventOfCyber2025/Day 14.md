@@ -1,21 +1,24 @@
 # Containers - DoorDasher's Demise
 
 
-What exact command lists running Docker containers?
+**Q1) What exact command lists running Docker containers?**
 
-`docker ps`
+- `docker ps`
 
-What file is used to define the instructions for building a Docker image?
 
-`Dockerfile`
+**Q2) What file is used to define the instructions for building a Docker image?**
 
-What's the flag?
+- `Dockerfile`
 
-`THM{DOCKER_ESCAPE_SUCCESS}`
 
-Bonus Question: There is a secret code contained within the news site running on port `5002`; this code also happens to be the password for the deployer user! They should definitely change their password. Can you find it?
+**Q3) What's the flag?**
 
-`DeployMaster2025!`
+- `THM{DOCKER_ESCAPE_SUCCESS}`
+
+
+**Bonus Question: There is a secret code contained within the news site running on port `5002`; this code also happens to be the password for the deployer user! They should definitely change their password. Can you find it?**
+
+- `DeployMaster2025!`
 
 
 

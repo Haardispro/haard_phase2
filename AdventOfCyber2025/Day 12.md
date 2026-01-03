@@ -18,12 +18,12 @@ Q2) Classify the 2nd email. What's the flag?
 
 Q3) Classify the 3rd email. What's the flag?
 
-	ImpersonationSocial Engineering TextSense of Urgency
+	Impersonation Social Engineering Text Sense of Urgency
 	flag: `THM{Impersonation-is-areal-thing-keepIt}`
 
 Q4) Classify the 4th email. What's the flag?
 
-	ImpersonationExternal Sender DomainSocial Engineering Text
+	Impersonation External Sender Domain Social Engineering Text
 	flag: `THM{Get-back-SOC-mas!!}`
 
 Q5) Classify the 5th email. What's the flag?
@@ -33,6 +33,6 @@ Q5) Classify the 5th email. What's the flag?
 
 Q6) Classify the 6th email. What's the flag?
 
-	ImpersonationTyposquatting/PunycodesSocial Engineering Text
+	Impersonation Typosquatting/Punycodes Social Engineering Text
 	flag: ` THM{number6-is-the-last-one!-DX!}`
 
