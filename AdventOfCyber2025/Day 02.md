@@ -20,6 +20,9 @@
 - Number of Toys: `1984000`
 
 
+### Tools used:
+
+- Used `setoolkit` -> Used for social engineering attacks 
 
 
 
