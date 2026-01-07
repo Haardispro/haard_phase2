@@ -40,10 +40,29 @@ pwn.college{gPUoqdPhHsvzGEgSrOAiBlUwy8K.dRTOxwyNwkzNyEzW}
 
 ---
 
-# 2. 
+# 2. set-multiple-registers
 
-# 3. 
+```asm
+section .text
+	global _start
 
+_start:
+   mov rax, 0x1337
+   mov r12, 0xCAFED00D1337BEEF
+   mov rsp, 0x31337
+```
+
+---
+# 3. add-to-registers 
+
+```asm
+section .text
+
+_start: 
+	add rdi, 0x331337
+```
+
+---
 # 4. linear-equation-registers 
 
 ```asm
@@ -250,6 +269,7 @@ _start:
 
 **flag:** `pwn.college{gN1rMtSEREoeen8wtpwM6XSy9LB.QXyEDOzwyNwkzNyEzW}`
 
+---
 # 13. memory-write 
 
 ```
@@ -263,7 +283,8 @@ _start:
 
 **flag:** `pwn.college{4GNAkABYNkhDEwniYHuif1b7wRP.QXzEDOzwyNwkzNyEzW}`
 
-# 14. memory-increment 
+---
+# 14. memory-increment (good)
 
 ```
 section .text
@@ -278,3 +299,60 @@ _start:
 
 **flag:** `pwn.college{Iy9niJgbER7UdUF3FK86L2ap4fE.dNDMywyNwkzNyEzW}`
 
+---
+# 15. byte-access 
+
+```asm
+section .text
+	global _start
+
+_start:
+	mov al, [0x404000]
+```
+
+**flag:** `pwn.college{UFXvLKXhaq8dRANnRjX5cbzwMqa.QX0EDOzwyNwkzNyEzW}`
+
+---
+# 16. memory-size-access 
+
+```asm
+section .text
+	global _start
+
+_start:
+	mov al, [0x404000]
+	mov bx, [0x404000]
+	mov ecx, [0x404000]
+	mov rdx, [0x404000]
+```
+
+**flag:**
+
+---
+# 17. little-endian-write 
+
+```asm
+section .text
+	global _start
+
+_start:
+
+```
+
+**flag:**
+
+---
+
+# 18. memory-sum 
+
+# 19. stack-subtraction 
+
+# 20. swap-stack-values 
+
+# 21. average-stack-values 
+
+# 22. absolute-jump
+
+# 23. relative-jump 
+
+ 
