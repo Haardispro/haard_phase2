@@ -5,4 +5,5 @@ forensics/
 rev/
 ignore/
 ROPEmporium/bins/
+ROPEmporium/.venv/
 .obsidian/
