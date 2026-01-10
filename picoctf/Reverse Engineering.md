@@ -28,7 +28,7 @@ gdb debugger0_a
 This is how the Assembler code for the function `main` looked like:
 ![GDB](assets/GDB.png)
 
-On further inspection, I could clearly see what the register for `eax` function contained. 
+On further inspection, I could clearly see what the register `eax` in the `main` function contained. 
 
 This is what it contained: 
 `$0x86342`
