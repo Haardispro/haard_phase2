@@ -58,6 +58,8 @@ I could not figure out this part of the circuit, so I mathematically traced the 
 
 I traced this part of the circuit and figured out that its a XOR gate. 
 
+When both inputs are high, the current flowing through Q1 and Q2. So, Q3 and Q4 are not getting powered, therefore the output is 0, satisfying the XOR condition 
+
 The entire circuit can be boiled down to a single expression: 
 `output = (in1 and in2) ^ ((in3 and in4) and (in5 or in6))`
 
