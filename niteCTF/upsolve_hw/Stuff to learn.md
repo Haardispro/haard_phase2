@@ -50,3 +50,36 @@ http://wiki.newae.com/Correlation_Power_Analysis
 
 # Timing Analysis 
 
+
+
+---
+
+
+Explain ROP
+
+what does ret gadget do? 
+
+SPI/CAN/I2C/UART protocol identification 
+
+READ AOC 
+
+Why is the last gate XOR 
+
+Explain NPN transistor 
+
+what is Buffer overflow ?
+
+
+Format String 
+
+nite CTF writeups 
+
+what is shift-key ? 
+
+what is a .ctf32 file? 
+
+what is encoding and modulation ? 
+
+Why is the last gate XOR? 
+
+

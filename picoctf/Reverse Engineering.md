@@ -231,7 +231,6 @@ for i in range(8, 16):
     password.insert(i, buff[23-i]) 
     print(23-i)
 
-
 for i in range(16, 32, 2):
     password.insert(i, buff[46-i])
     print(46-i)

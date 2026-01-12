@@ -4,27 +4,36 @@
 ➜ tree
 .
 ├── AdventOfCyber2025
+│   ├── Advent_of_Cyber_Certificate.pdf
 │   ├── assets
+│   ├── Day 01.md
+│   ├── Day 02.md
+│   ├── Day 03.md
+│   ├── Day 04.md
+│   ├── Day 05.md
+│   ├── Day 06.md
+│   ├── Day 07.md
+│   ├── Day 08.md
+│   ├── Day 09.md
 │   ├── Day 10.md
 │   ├── Day 11.md
 │   ├── Day 12.md
 │   ├── Day 13.md
-│   ├── Day 1.md
-│   ├── Day 2.md
-│   ├── Day 3.md
-│   ├── Day 4.md
-│   ├── Day 5.md
-│   ├── Day 6.md
-│   ├── Day 7.md
-│   ├── Day 8.md
-│   ├── Day 9.md
-│   └── openvpn
+│   ├── Day 14.md
+│   ├── Day 15.md
+│   ├── Day 16.md
+│   ├── Day 17.md
+│   ├── Day 18.md
+│   ├── Day 19.md
+│   ├── Day 20.md
+│   ├── Day 21.md
+│   ├── Day 22.md
+│   ├── Day 23.md
+│   └── Day 24.md
 ├── Assembly_pwn.college
-│   ├── 96a2b94d4be48285f2605d843a1e6db37da9a944.pdf
 │   ├── Assembly Crash Course.md
-│   ├── Challenges.md
-│   ├── ignore
-│   └── M_Morris_Mano_Charles_R_Kime-Logic_and_Computer_Design_Fundamentals-EN.pdf
+│   ├── books
+│   └── Challenges.md
 ├── bonus
 │   ├── Echo Valley.md
 │   ├── Flag Leak.md
@@ -38,6 +47,7 @@
 │   └── Hardware_Security
 ├── Domain-name.md
 ├── JTP-2.pdf
+├── JTP_Interview_Slots.pdf
 ├── niteCTF
 │   ├── assets
 │   ├── Attention is all you need (solved).md
@@ -53,5 +63,11 @@
 │   ├── Hardware.md
 │   ├── Reverse Engineering.md
 │   └── Web Exploitation.md
-└── README.md
+├── README.md
+└── ROPEmporium
+    ├── bins
+    ├── callme.md
+    ├── ret2win.md
+    ├── split.md
+    └── write4.md
 ```
