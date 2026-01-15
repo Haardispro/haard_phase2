@@ -291,8 +291,11 @@ _start:
 
 **flag:** `pwn.college{Iy9niJgbER7UdUF3FK86L2ap4fE.dNDMywyNwkzNyEzW}`
 
+# 15. byte-access
 
-# 15. memory-size-access
+
+
+# 16. memory-size-access
 
 ```asm
 section .text
@@ -308,7 +311,7 @@ _start:
 **flag:**`pwn.college{0DbDSMd77n1ZiEYOplbOrkVeGLi.dRDMywyNwkzNyEzW}`
 
 
-# 16. little-endian-write 
+# 17. little-endian-write 
 
 ```asm
 section .text
@@ -326,7 +329,7 @@ _start:
 
 **flag:** `pwn.college{UlhLrhwsG67Kaq7ZUtRSIjXUCWB.dVDMywyNwkzNyEzW}`
 
-# 17. memory-sum 
+# 18. memory-sum 
 
 Perform the following:
 
@@ -348,7 +351,7 @@ _start:
 
 **flag:**`pwn.college{Ij3S7MQ3WzuDlgxL2NkgJwSCs5q.dZDMywyNwkzNyEzW}`
 
-# 18. stack-subtraction 
+# 19. stack-subtraction 
 
 ```asm
 section .text
@@ -362,7 +365,7 @@ _start:
 
 **flag:** `pwn.college{Qp3nHX52fmnOCtfKV-IbIR_v21l.ddDMywyNwkzNyEzW}`
 
-# 19. swap-stack-values 
+# 20. swap-stack-values 
 
 Using only the following instructions:
 
@@ -381,19 +384,13 @@ section .text
 	global _start
 	
 _start:
-	pop rsi ; rsi = rsp
-	push rdi ; rsi = rdi 
-	pop rsp     ; rdi = rsp 
-
+	push rdi
+	push rsi
+	pop rdi
+	pop rsi
 ```
 
-```
-a = 5
-b = 4
+**flag:** `pwn.college{wKcx5VVZWh9kBJ2DqjFZlsBdt7F.dhDMywyNwkzNyEzW}`
 
-c = b # c -> 4
+# 20. average-stack-values 
 
-b = a # b -> 5
-
-a = c # a -> 4 
-```
