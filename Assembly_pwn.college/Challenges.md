@@ -640,8 +640,59 @@ _start:
 **flag:** `pwn.college{4YfFYaFyEa239sa2AEvUSkEoOXw.dRTMywyNwkzNyEzW}`
 # 29. string-lower 
 
-```asm
+Please implement the following logic:
 
+```plaintext
+str_lower(src_addr):
+  i = 0
+  if src_addr != 0:
+    while [src_addr] != 0x00:
+      if [src_addr] <= 0x5a:
+        [src_addr] = foo([src_addr])
+        i += 1
+      src_addr += 1
+  return i
+```
+
+`foo` is provided at `0x403000`. `foo` takes a single argument as a value and returns a value.
+
+All functions (`foo` and `str_lower`) must follow the Linux amd64 calling convention (also known as System V AMD64 ABI): [System V AMD64 ABI](https://en.wikipedia.org/wiki/X86_calling_conventions#System_V_AMD64_ABI)
+
+Therefore, your function `str_lower` should look for `src_addr` in `rdi` and place the function return in `rax`.
+
+An important note is that `src_addr` is an address in memory (where the string is located) and `[src_addr]` refers to the byte that exists at `src_addr`.
+
+Therefore, the function `foo` accepts a byte as its first argument and returns a byte.
+
+```asm
+section .text
+    global str_lower
+
+str_lower:
+    xor     rax, rax            ; i = 0
+    test    rdi, rdi            ; if src_addr == 0
+    je      .done
+
+.loop:
+    mov     bl, byte [rdi]      ; load current byte
+    test    bl, bl              ; check for '\0'
+    je      .done
+
+    cmp     bl, 0x5A            ; if byte <= 0x5A
+    ja      .next
+
+    ; call foo(byte)
+    movzx   rdi, bl             ; argument to foo
+    call    0x403000             ; foo(bl)
+    mov     byte [rdi], al      ; store result back
+    inc     rax                 ; i++
+
+.next:
+    inc     rdi                 ; src_addr++
+    jmp     .loop
+
+.done:
+	
 ```
 
 # 30. most-common-byte 
