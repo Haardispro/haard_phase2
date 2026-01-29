@@ -293,7 +293,15 @@ _start:
 
 # 15. byte-access
 
+```asm
+section .text
+	global _start
+	
+_start:
+	mov al, byte [0x404000]
+```
 
+**flag:** `pwn.college{UFXvLKXhaq8dRANnRjX5cbzwMqa.QX0EDOzwyNwkzNyEzW}`
 
 # 16. memory-size-access
 
