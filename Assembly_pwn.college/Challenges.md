@@ -669,31 +669,109 @@ section .text
     global str_lower
 
 str_lower:
-    xor     rax, rax            ; i = 0
-    test    rdi, rdi            ; if src_addr == 0
-    je      .done
+    mov rcx, 0x0
+    cmp rdi, 0x0
+    je done
+loop:
+	mov rbx, rdi
+	mov rax, 0x403000
+	xor rdi, rdi
+	mov dil, byte [rbx]
+	cmp dil, 0x0
+	je done
+	cmp dil, 0x5a
+	jg greater 
+	inc rcx
+	call rax
+	mov byte [rbx], al
 
-.loop:
-    mov     bl, byte [rdi]      ; load current byte
-    test    bl, bl              ; check for '\0'
-    je      .done
+greater:
+	mov rdi, rbx
+	inc rdi
+	jmp loop
 
-    cmp     bl, 0x5A            ; if byte <= 0x5A
-    ja      .next
-
-    ; call foo(byte)
-    movzx   rdi, bl             ; argument to foo
-    call    0x403000             ; foo(bl)
-    mov     byte [rdi], al      ; store result back
-    inc     rax                 ; i++
-
-.next:
-    inc     rdi                 ; src_addr++
-    jmp     .loop
-
-.done:
-	
+done:
+	mov rax, rcx
+	ret 
 ```
+
+**flag:** `pwn.college{UbwcToyuSFYq6Ckh5rXotFitDn5.dVTMywyNwkzNyEzW}`
 
 # 30. most-common-byte 
 
+Once again, please make function(s) that implement the following:
+
+```plaintext
+most_common_byte(src_addr, size):
+  i = 0
+  while i <= size-1:
+    curr_byte = [src_addr + i]
+    [stack_base - curr_byte * 2] += 1
+    i += 1
+
+  b = 0
+  max_freq = 0
+  max_freq_byte = 0
+  while b <= 0xff:
+    if [stack_base - b * 2] > max_freq:
+      max_freq = [stack_base - b * 2]
+      max_freq_byte = b
+    b += 1
+
+  return max_freq_byte
+```
+
+**Assumptions:**
+
+- There will never be more than `0xffff` of any byte
+- The size will never be longer than `0xffff`
+- The list will have at least one element
+
+**Constraints:**
+
+- You must put the "counting list" on the stack
+- You must restore the stack like in a normal function
+- You cannot modify the data at `src_addr`
+
+```asm
+section .text
+        global common_byte
+
+common_byte:
+        mov rbp, rsp
+        sub rsp, 0x100
+        xor r10, r10
+
+loop1:
+        cmp r10, rsi
+        jg assign_freq
+        mov dl, byte [rdi+r10]
+        add byte [rsp+rdx], 1
+        inc r10
+        jmp loop1
+
+assign_freq:
+        xor rax, rax
+        xor rbx, rbx
+        xor rcx, rcx
+        jmp loop2
+
+loop2:
+        cmp rbx, 0xff
+        jg done
+        cmp [rsp+rbx], cl
+        jg update
+        inc rbx
+        jmp loop2
+update:
+        mov cl, [rsp+rbx]
+        mov rax, rbx
+        inc rbx
+        jmp loop2
+done:
+        mov rsp, rbp
+        ret
+```
+
+
+**flag:** `pwn.college{0KLbtNqqE7fz6qleyytxW3BS_cW.dZTMywyNwkzNyEzW}`
