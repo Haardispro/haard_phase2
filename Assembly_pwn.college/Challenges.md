@@ -392,5 +392,257 @@ _start:
 
 **flag:** `pwn.college{wKcx5VVZWh9kBJ2DqjFZlsBdt7F.dhDMywyNwkzNyEzW}`
 
-# 20. average-stack-values 
+# 21. average-stack-values 
+
+```asm
+section .text
+	global _start
+
+_start:
+	mov rbx, qword [rsp+8]
+	add rbx, qword [rsp+16]
+	add rbx, qword [rsp+24]
+	add rbx, qword [rsp]
+	mov rcx, 4
+	mov rax, rbx
+	div rcx
+	push rax
+```
+
+**flag:** `pwn.college{k3etjTkJ6fuveeoCZxJkH5tLsQv.dlDMywyNwkzNyEzW}`
+
+# 22. absolute-jump
+
+```asm
+section .text
+	global _start
+
+_start:
+	mov rax, 0x403000
+	jmp rax
+```
+
+**flag:** `pwn.college{ESgspj6qhJkCTlfSqT6rg6zl-zW.QX1EDOzwyNwkzNyEzW}`
+
+# 23. relative-jump
+
+```asm
+section .text
+	global _start
+
+_start:
+	jmp huh
+	%rep 0x51
+	nop
+	#endrep
+huh:
+	mov rax, 0x1
+```
+
+**flag:** `pwn.college{wGJBLgVKbAabogmejaoZ_RayGuY.QX2EDOzwyNwkzNyEzW}`
+
+# 24. jump-trampoline 
+
+```asm
+section .text
+	global _start
+
+_start:
+	jump huh
+	%rep 0x51
+	nop
+	%endrep
+huh:
+	pop rdi
+	mov rax, 0x403000
+	jmp rax
+```
+
+
+**flag:** `pwn.college{8Xe99zo6t-UV3P9pSJQwUfiecAs.dBTMywyNwkzNyEzW}`
+
+# 25. conditional-jump (good) 
+
+Implement this in assembly
+
+```plaintext
+if [x] is 0x7f454c46:
+    y = [x+4] + [x+8] + [x+12]
+else if [x] is 0x00005A4D:
+    y = [x+4] - [x+8] - [x+12]
+else:
+    y = [x+4] * [x+8] * [x+12]
+```
+
+`x = rdi, y = rax`
+
+```asm 
+section .text
+        global _start
+
+_start:
+        mov eax, dword [rdi]
+        cmp eax, 0x7f454c46
+        je first
+
+        cmp eax, 0x00005A4D
+        je second
+
+        mov eax, dword [rdi+4]
+        imul eax, dword [rdi+8]
+        imul eax, dword [rdi+12]
+        jmp done
+first:
+        mov eax, dword [rdi+4]
+        add eax, dword [rdi+8]
+        add eax, dword [rdi+12]
+        jmp done
+second:
+        mov eax, dword [rdi+4]
+        sub eax, dword [rdi+8]
+        sub eax, dword [rdi+12]
+        jmp done
+
+done:
+```
+
+**flag:** `pwn.college{Qlo8-eMkX7S6vBx2qAqY6SvgyWA.dFTMywyNwkzNyEzW}`
+
+# 26. indirect-jump 
+
+Using the above knowledge, implement the following logic:
+
+```plaintext
+if rdi is 0:
+  jmp 0x40301e
+else if rdi is 1:
+  jmp 0x4030da
+else if rdi is 2:
+  jmp 0x4031d5
+else if rdi is 3:
+  jmp 0x403268
+else:
+  jmp 0x40332c
+```
+
+Please do the above with the following constraints:
+
+- Assume `rdi` will NOT be negative.
+- Use no more than 1 `cmp` instruction.
+- Use no more than 3 jumps (of any variant).
+- We will provide you with the number to 'switch' on in `rdi`.
+- We will provide you with a jump table base address in `rsi`.
+
+Here is an example table:
+
+```
+[0x40427c] = 0x40301e (addrs will change)
+[0x404284] = 0x4030da
+[0x40428c] = 0x4031d5
+[0x404294] = 0x403268
+[0x40429c] = 0x40332c
+```
+
+```asm
+section .text
+        global _start
+
+_start:
+        cmp rdi, 3
+        ja default_case
+
+        jmp qword [rsi + rdi*8]
+default_case:
+		jmp qword [rsi + 32]
+```
+
+**flag:** `pwn.college{E43ni7CQXWCxCWY8Y3QhgdT07ZQ.dJTMywyNwkzNyEzW}`
+
+# 27. average-loop
+
+```plaintext
+sum = 0
+i = 1
+while i <= n:
+    sum += i
+    i += 1
+```
+
+Please compute the average of `n` consecutive quad words, where:
+
+- `rdi` = memory address of the 1st quad word
+- `rsi` = `n` (amount to loop for)
+- `rax` = average computed
+
+```asm
+section .text
+	global _start
+
+_start:
+	mov rbx, 1 ; i = 1
+	mov rcx, qword [rdi]
+.loop:
+
+	cmp rbx, rsi
+	ja .default
+	
+	add rcx, qword [rdi+rbx*8]
+	inc rbx
+
+	jmp .loop
+
+.default:
+	mov rax, rcx
+	xor rdx, rdx
+	div rsi
+```
+
+**flag:** `pwn.college{gGHJGwmbJOom2VO4-GA1lU_hobr.dNTMywyNwkzNyEzW}`
+
+# 28. count-non-zero
+
+Count the consecutive non-zero bytes in a contiguous region of memory, where:
+
+- `rdi` = memory address of the 1st byte
+- `rax` = number of consecutive non-zero bytes
+
+Additionally, if `rdi = 0`, then set `rax = 0` (we will check)!
+
+An example test-case, let:
+
+- `rdi = 0x1000`
+- `[0x1000] = 0x41`
+- `[0x1001] = 0x42`
+- `[0x1002] = 0x43`
+- `[0x1003] = 0x00`
+
+Then: `rax = 3` should be set.
+
+```asm
+section .text
+	global _start
+	
+_start:
+	mov rax, 0
+	cmp rdi, 0 
+	je .done
+	
+.check:
+	cmp byte [rdi+rax], 0
+	je .done
+	inc rax
+	jmp .check
+
+.done:
+
+```
+
+**flag:** `pwn.college{4YfFYaFyEa239sa2AEvUSkEoOXw.dRTMywyNwkzNyEzW}`
+# 29. string-lower 
+
+```asm
+
+```
+
+# 30. most-common-byte 
 
